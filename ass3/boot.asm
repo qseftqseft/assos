@@ -8,15 +8,14 @@ menu:
 	mov al, 0x03  	;the
 	int 0x10		;scr-
 	popa			;een
-	mov ah, 0x0e	;
-	mov al, 13		;
-	int 0x10		;
-	mov al, 10		;
-	int 0x10		;
 	mov ax, 0		;
 	int 0x16		;
 	mov ah, 0x0e	;
 	int 0x10		;
+	mov cx, 0fh		;wait
+	mov dx, 4240h	;1000
+	mov ah, 86h		;mili-
+	int 15h			;seconds
 	cmp al, '1'		;if keyboard 1
 	je one			;jump to one
 	cmp al, '2'		;if keyboard 2
@@ -75,4 +74,4 @@ exit:
 	jmp $
 
 times 510-($-$$) db 0	;
-dw 0xaa55		;end
+dw 0xaa55				;end
